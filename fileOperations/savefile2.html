@@ -1,0 +1,24 @@
+<!--
+https://code.tutsplus.com/how-to-save-a-file-with-javascript--cms-41105t
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a download="monty.txt" href="data:text/plain;charset=utf-8,My name is Monty.">Download Text File with Name</a>
+
+
+    <script>
+            const link = document.querySelector('a.dynamic');
+            let name = 'Monty';
+            let text = `My name in ${name}. 
+                              I love writing tutorials.`;
+            link.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            link.setAttribute('download', `${name.toLowerCase()}.txt`);
+    </script>
+</body>
+</html>

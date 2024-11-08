@@ -1,0 +1,81 @@
+<!--
+https://code.tutsplus.com/how-to-save-a-file-with-javascript--cms-41105t
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <a id="simple" download="monty.txt" href="data:text/plain;charset=utf-8,">Download Text File with Name</a>
+    <p></p>
+    <script>
+
+        const link = document.querySelector('a.simple');
+        let name = 'Monty';
+        let text = `My name in ${name}. I love writing tutorials.`;
+        var textBlob = new Blob([text], { type: 'text/plain' });
+        link.setAttribute('href', URL.createObjectURL(textBlob));
+        link.setAttribute('download', `${name.toLowerCase()}.txt`);
+    
+    </script>
+    
+    
+    <textarea id="textarea2b"> </textarea>
+    <button id="save-file2b"> save File 2b </button>
+    <p></p>
+    <script>
+        
+        const saveBtn2b = document.querySelector('button.save-file2b');
+        let name2 = 'Monty';
+        saveBtn2b.addEventListener('click', function () {
+            console.log("saveBtn2b clicked");
+            var tempLink2b = document.createElement("a");
+            let textArea2b = document.querySelector("textarea2b");
+            var taBlob2b = new Blob([textArea2b.value], { type: 'text/plain' });
+            tempLink2b.setAttribute('href', URL.createObjectURL(taBlob2b));
+            tempLink2b.setAttribute('download', `${name2.toLowerCase()}.txt`);
+            tempLink2b.click();
+            URL.revokeObjectURL(tempLink2b.href);
+        });
+
+    </script>
+
+    <textarea id="textarea2c"> </textarea>
+    <button id="save-file2c"> save File 2c</button>
+    <p></p>
+
+    <script>
+
+        const saveBtn2c = document.querySelector('button.save-file2c');
+        let name3 = 'Monty';
+        saveBtn2c.addEventListener('click', async function () {
+            console.log("saveBtn2c clicked");
+            let textArea2c = document.querySelector("textarea2c");
+            var taBlob2c = new Blob([textArea.value], { type: 'text/plain' });
+
+            const pickerOptions = {
+                suggestedName: `${name3.toLowerCase()}.txt`,
+                types: [
+                    {
+                        description: 'Simple Text File',
+                        accept: {
+                            'text/plain': ['.txt'],
+                        },
+                    },
+                ],
+            };
+            const fileHandle = await window.showSaveFilePicker(pickerOptions);
+            const writableFileStream = await fileHandle.createWritable();
+            await writableFileStream.write(taBlob2c);
+            await writableFileStream.close();
+        });
+
+    </script>
+
+</body>
+</html>

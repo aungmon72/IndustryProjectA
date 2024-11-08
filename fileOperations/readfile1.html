@@ -1,0 +1,37 @@
+<!-- https://stackoverflow.com/questions/41155325/
+     how-to-read-a-text-file-saved-on-my-computer-using-javascript
+ --> 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function OnFileLoad() {
+            var file = document.getElementById("FileReader").files[0];
+            var textType = /text.*/;
+            var fileDisplayArea = document.getElementById("FileContent");
+            if (file.type.match(textType)) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    fileDisplayArea.innerText = reader.result;
+                }
+
+                reader.readAsText(file);
+            } else {
+                fileDisplayArea.innerText = "File not supported!"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="file" id="FileReader" onchange="OnFileLoad()" />
+    <div id="FileContent">Your content will appear here</div>
+</body>
+
+</html>
+
+
+
