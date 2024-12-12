@@ -1,0 +1,36 @@
+/* Credit goes to https://codepen.io/kryvonos_v/pen/zXKYvw */
+
+.marquee {
+    overflow: hidden;
+    font-family: "Pridi", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: #FFDC00;
+  }
+  
+  .marquee__inner {
+    display: flex;
+  }
+  
+  .marquee__line {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 10px 15px;
+    min-width: 100%;
+    white-space: nowrap;
+    animation-name: marqueeLine;
+    animation-duration: 30s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes marqueeLine {
+    from {
+      transform: translateX(0);
+    }
+    
+    to {
+      transform: translateX(-100%);
+    }
+  }

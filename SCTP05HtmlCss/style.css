@@ -1,0 +1,88 @@
+html, body {
+    height: 100%;
+    margin: 0%;
+}
+
+html {
+    font-size: 12px;
+}
+
+
+@media screen and (min-width: 400px) {
+#heading {
+    background-image: url("image/StandfordJuniorUniversity1891LogoText.jpg");
+    background-repeat:repeat;
+    width:100%;
+    height:50px;
+} 
+}
+
+
+
+@media screen and (min-width: 480px) {
+    #heading {
+        
+        background-image: url("images/StandforJuniorUniversityPeople.png");
+        background-repeat:repeat;
+        background-size: contain;
+        
+        width:auto ;
+        height:50px;
+    }
+}
+
+#headingImage {
+
+    height: 50px;    
+}
+
+
+#iFrameFlex {
+    display : flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 480px) {
+    #iFrameFlex {
+        flex-direction: column;
+    }
+}
+
+#navigationTargetIFrame{
+    flex-grow: 3;
+    flex-basis: 300px;
+    flex-shrink: 0;
+    background-color: cyan;
+    gap: 10px;
+    border:2px;  
+    border-color: blue;
+    border-style: dotted;
+    height:500px;
+}
+
+#navigationTargetRightPaneIFrame{
+    flex-grow: 3;
+    flex-basis: 300px;
+    background-color: #86d7f7;
+    border:2px;
+    border-color: blue;
+    border-style: dotted;
+    height:500px;
+}
+
+#navigationIFrame{
+    height:75px;
+}
+
+
+#homeIcon {
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    position: sticky;
+    top: 70%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+
+

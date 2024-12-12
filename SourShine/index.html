@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map Custom Popup Sample</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <style>
+        #map { height: 400px; }
+        .custom-popup .leaflet-popup-content-wrapper {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .custom-popup .leaflet-popup-tip {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .popup-button {
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .confirm-button { background-color: #4CAF50; color: white; }
+        .cancel-button { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([1.3521, 103.8198], 11);  // Singapore coordinates
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Function to handle map clicks
+        function onMapClick(e) {
+            var popupContent = document.createElement('div');
+            popupContent.innerHTML = `
+                <h4>Ghost Sighting!</h4>
+                <p>Do you want to report a ghost sighting here?</p>
+            `;
+
+            var confirmButton = document.createElement('button');
+            confirmButton.textContent = 'Confirm';
+            confirmButton.className = 'popup-button confirm-button';
+            confirmButton.addEventListener('click', function() {
+                confirmSighting(e.latlng.lat, e.latlng.lng);
+            });
+
+            var cancelButton = document.createElement('button');
+            cancelButton.textContent = 'Cancel';
+            cancelButton.className = 'popup-button cancel-button';
+            cancelButton.addEventListener('click', cancelSighting);
+
+            popupContent.appendChild(confirmButton);
+            popupContent.appendChild(cancelButton);
+
+            L.popup({className: 'custom-popup'})
+                .setLatLng(e.latlng)
+                .setContent(popupContent)
+                .openOn(map);
+        }
+
+        // Add click event listener to the map
+        map.on('click', onMapClick);
+
+        // Function to handle sighting confirmation
+        function confirmSighting(lat, lng) {
+            console.log(`Sighting confirmed at ${lat}, ${lng}`);
+            // Here you would typically save the sighting data
+      
+
+            map.closePopup();
+        }
+
+        // Function to handle sighting cancellation
+        function cancelSighting() {
+            console.log('Sighting cancelled');
+            map.closePopup();
+        }
+    </script>
+</body>
+</html>

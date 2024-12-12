@@ -1,0 +1,29 @@
+#map{
+    /* 1vh is 1% of the window height */
+    height: 90vh;
+}
+
+#container {
+    /* basically enables absolute position for the child elements */
+    position:relative;
+}
+
+#search-container {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    z-index:1000;
+    background-color: rgba(215, 227, 245, 0.7);
+}
+
+#search-results {
+    max-height: 300px;
+    overflow-y:scroll;
+
+}
+
+.result {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}

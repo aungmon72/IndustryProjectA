@@ -1,0 +1,22 @@
+{
+  "name": "geodb",
+  "version": "1.0.0",
+  "description": "http://geodb-free-service.wirefreethought.com/v1/geo/places",
+  "main": "accuweather.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "coordinate_to_country": "^1.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "geojson-geometries-lookup": "^0.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.12.0",
+    "require": "^0.4.9"
+  }
+}
